@@ -1,0 +1,123 @@
+{%extends 'calc/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Calculator</title>
+<meta name="description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property="og:description" content="Angular Resolution Calculator" />
+<meta content="" property="og:site_name" />
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta name="twitter:description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property='og:description' content="Angular Resolution Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock%}
+
+{%block content%}
+<div class="container text-center">
+    <div class="card">
+        <div class="row my-5">
+    <div class="col-sm-10 text-center">
+    <h1 class="btn btn-info my-2 card-title" style="width: 300px; height: 50px;">LCM Calculator</h1>
+    <div class="card-body">
+        <p class="text-justify"> Try our quick and easy tool LCM Calculator to find the LCM of two numbers. You just need to provide the input numbers in the corresponding input field and tap on the Calculate Button to find the Least Common Multiple of two numbers.<br>
+        <span style="font-weight: bold;">Example:</span> number 1 - 1500 and number 2 - 20.</p>
+<form action="{% url 'lcm1' %}" method="POST" novalidate>
+    {% csrf_token %}
+    {% for form in forms %}
+        <span class="p-2 mb-1 bg-light text-dark">{{form.label}}</span>{{form}}
+    {% endfor %} 
+   
+    <input type="submit" name="Calculate" value="Calculate" class="btn btn-info" >
+    <a href="{% url 'lcm1' %}" class="btn btn-outline-warning">Reset</a>
+</form>
+<br>
+<p class="text-justify"><span style="font-weight: bold;">LCM Calculator:</span> Make use of the handy little calculator to find the Least Common Multiple of two numbers in a fraction of seconds. The free instant tools will let you do your calculations on a faster note given the inputs. You will find a step by step procedure explaining how to find the LCM of two numbers using different methods.</p>
+{% if re %}
+<br>
+<div class="text-justify">
+<h3 class="btn btn-danger">Output:</h3><br>
+<h3 class="btn btn-info" >LCM using Prime Factorization Method</h3><br>
+<h5>Check out the procedure to find the Least Common Multiple of {{num1}} and {{num1}} using the Prime Factorization Method. They are as follows</h5>
+<h4 class="btn btn-outline-primary">Step 1: </h4>
+<h5>Firstly, find the Prime Factorization of given numbers {{num1}}, {{num2}}<br><br>
+Prime factors of {{num1}} are {{prime_fact1}}. <br>
+Prime factorization of {{num1}} in exponent form is: {{num1}} = {{prime_fact11}}</h5>
+<h5>
+Prime factors of {{num2}} are {{prime_fact2}}. <br>
+Prime factorization of {{num2}} in exponent form is: {{num2}} = {{prime_fact22}}</h5>
+<br><br>
+<h4 class="btn btn-outline-primary">Step 2:</h4> 
+<h5> Multiply together each of the Prime Numbers with the highest power to obtain the Least Common Multiple<br><br>
+On doing so, you will get the resultant equation as {{l}}= {{lcm}}<br><br>
+Therefore, LCM of two numbers {{num1}} and {{num2}} is {{lcm}}<br><br>
+LCM({{num1}},{{num2}}) = {{lcm}}<br><br>
+</h5>
+<h3 class="btn btn-info" >LCM using GCF Method</h3><br>
+<h5>Go through the simple and easy steps listed to know the Least Common Multiple of {{num1}}, {{num2}} using the GCF Formula</h5><br>
+<h4 class="btn btn-outline-primary">Step 1: </h4>
+<h5>Find the Greatest Common Factor of {{num1}}, {{num2}} initially.</h5>
+<h5>Greatest Common Factor is the largest integer by which both the numbers can be divided. The GCF of {{num1}}, {{num2}} is {{gcf}}. <br>
+Simply use the GCF obtained in the formula to find the Least Common Multiple <br><br>
+i.e. LCM(a,b) =a*b/GCF(a,b)<br><br>
+Substitute the inputs in the formula and you will get as under</h5>
+<h5>LCM({{num1}}, {{num2}})= {{num1}}*{{num2}}/GCF({{num1}}, {{num2}})<br>
+= {{lcm}}<br>
+Thus, LCM({{num1}}, {{num2}}) using the GCF Formula is {{lcm}}.
+</h5>
+{% endif %}
+</div>
+</div>
+</div>
+</div>
+ </div>
+</div>
+{%endblock%}
